@@ -4,34 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Navbar/navbar.css">
+    <link rel="stylesheet" href="src/views/Navbar/navbar.css">
     <title>Responsive Navbar using HTML & CSS</title>
 </head>
 <body>
     <header>
-        <div class="logo">EVLEARN</div>
+        <div class="logo">Gourmet Gather</div>
         <input type="checkbox" id="nav_check" hidden>
         <nav id="nav">
             <ul>
                 <li>
-                    <a href="../Home/homeViews.php" class="active">Home</a>
-                </li>
-                <li>
-                    <a href="#Recette">Recette</a>
-                </li>
-                <li>
-                    <a href="#Avis">Avis</a>
+                    <a href="src/views/Home/homeViews.php" class="active">Accueil</a>
                 </li>
                 <?php
-                    if(isset($_SESSION['email']) && isset($_SESSION['motDePasse'])) {
-                        echo '<li>
-                            <a href="#">Déconnexion</a>
-                        </li>';
-                    } else {
-                        echo '<li>
-                            <a href="../Login-Register/login-registerViews.php">Connexion-Inscription</a>
-                        </li>';
+                if (isset($_SESSION['email']) && isset($_SESSION['motDePasse'])) {
+                    echo '<li><a href="src/views/Login-Register/login-registerViews.php?logout=true">Déconnexion</a></li>';
+                    if (isset($_GET['logout'])) {
+                        session_unset();
+                        session_destroy();
+                        header('Location: src/views/Login-Register/login-registerViews.php');
+                        exit();
                     }
+                } else {
+                    echo '<li><a href="src/views/Login-Register/login-registerViews.php">Connexion-Inscription</a></li>';
+                    if (isset($_GET['login'])) {
+                        session_start();
+                        header('Location: src/views/Login-Register/login-registerViews.php');
+                        exit();
+                    }
+                }
                 ?>
             </ul>
         </nav>
@@ -42,6 +43,6 @@
         </label>
     </header>
 
-    <script src="../Navbar/navbar.js"></script>
+    <script src="src/views/Navbar/navbar.js"></script>
 </body>
 </html>

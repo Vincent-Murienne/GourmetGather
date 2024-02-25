@@ -1,5 +1,5 @@
 <?php
-require_once '../models/userModel.php'; 
+require_once "src/models/userModel.php'; 
 
 class AuthController {
     private $userModel;
@@ -8,8 +8,8 @@ class AuthController {
         $this->userModel = new UserModel($db);
     }
 
-    public function login($email, $motDePasse) {
-        $result = $this->userModel->verifierConnexion($email, $motDePasse);
+    public function loginAdm($roles) {
+        $result = $this->userModel->verifierConnexionAdm($roles);
         if ($result) {
             // L'utilisateur est connecté avec succès
             // Vous pouvez rediriger l'utilisateur vers une page sécurisée

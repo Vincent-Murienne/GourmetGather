@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 13 fév. 2024 à 10:42
+-- Généré le : jeu. 15 fév. 2024 à 08:52
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -157,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `description` varchar(200) DEFAULT NULL,
   `nombrePortions` int DEFAULT NULL,
   `idUser` int DEFAULT NULL,
+  `photo` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`idRecette`),
   KEY `idUser` (`idUser`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
@@ -165,8 +166,8 @@ CREATE TABLE IF NOT EXISTS `recette` (
 -- Déchargement des données de la table `recette`
 --
 
-INSERT INTO `recette` (`idRecette`, `titre`, `description`, `nombrePortions`, `idUser`) VALUES
-(1, 'Fondue de camembert', 'Fondue de camembert\r\n', 1, 3);
+INSERT INTO `recette` (`idRecette`, `titre`, `description`, `nombrePortions`, `idUser`, `photo`) VALUES
+(1, 'Fondue de camembert', 'Fondue de camembert\r\n', 1, 3, 'https://www.president.fr/wp-content/uploads/2019/12/la-fondue-camembert-aux-pommes-540x540.png');
 
 -- --------------------------------------------------------
 
@@ -183,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `motDePasse` varchar(50) DEFAULT NULL,
   `roles` int DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `user`
@@ -192,7 +193,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`idUser`, `nom`, `prenom`, `email`, `motDePasse`, `roles`) VALUES
 (1, 'Murienne', 'Vincent', 'muriennevincent@gmail.com', 'Phan@1972', 0),
 (2, 'Murienne', 'Vincent', 'vmurienne-gourmetgather@gmail.com', 'Phan@1972', 1),
-(3, 'Roger', 'John', 'johnroger@yahoo.fr', 'johnRoger@123', 0);
+(3, 'Roger', 'John', 'johnroger@yahoo.fr', 'johnRoger@123', 0),
+(37, 'Hadil', 'Hadil', 'Hadil@gmail.com', 'Hadil', 0),
+(4, 'Selva', 'Brass', 'Brass943@gmail.com', 'Jeanestachier94', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

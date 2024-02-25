@@ -14,7 +14,7 @@ $avisRecettes = $recetteModel->getAvisRecette();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-        <link rel="stylesheet" href="home.css">
+        <link rel="stylesheet" href="src/views/Home/home.css">
     </head>
     <body>
         <?php include_once 'src/views/Navbar/navbarViews.php'; ?>
@@ -65,6 +65,6 @@ $avisRecettes = $recetteModel->getAvisRecette();
             <div class="swiper-pagination"></div>
         </section>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script src="home.js"></script>
+        <script src="src/views/Home/home.js"></script>
     </body>
 </html>

@@ -2,10 +2,10 @@
 
 return [
     '/' => function() {
-        require '../views/home.php';
+        require 'src/views/home.php';
     },
     '/login' => function() {
-        require '../views/login.php';
+        require 'src/views/login.php';
     }
 ]
 
