@@ -1,6 +1,6 @@
 <?php
-    require_once 'src/models/recetteModel.php';
-    require_once 'src/bdd/bddConnexion.php';
+    require_once 'models/recetteModel.php';
+    require_once 'bdd/bddConnexion.php';
     $recetteModel = new RecetteModel($db);
     $recettes = $recetteModel->getAllRecettes();
     $avisRecettes = $recetteModel->getAvisRecette();

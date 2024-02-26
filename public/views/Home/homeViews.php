@@ -1,7 +1,7 @@
 <?php 
-include_once 'src/controllers/homeController.php';
-require_once 'src/models/recetteModel.php';
-require_once 'src/bdd/bddConnexion.php';
+include_once 'controllers/homeController.php';
+require_once 'models/recetteModel.php';
+require_once 'bdd/bddConnexion.php';
 $recetteModel = new RecetteModel($db);
 $recettes = $recetteModel->getAllRecettes();
 $avisRecettes = $recetteModel->getAvisRecette();
@@ -14,10 +14,9 @@ $avisRecettes = $recetteModel->getAvisRecette();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-        <link rel="stylesheet" href="src/views/Home/home.css">
+        <link rel="stylesheet" href="../../views/Home/home.css">
     </head>
     <body>
-        <?php include_once 'src/views/Navbar/navbarViews.php'; ?>
         <!--<input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez une recette">
         <div id="results"></div>!-->
         <section>
@@ -65,6 +64,6 @@ $avisRecettes = $recetteModel->getAvisRecette();
             <div class="swiper-pagination"></div>
         </section>
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script src="src/views/Home/home.js"></script>
+        <script src="../../views/Home/home.js"></script>
     </body>
 </html>

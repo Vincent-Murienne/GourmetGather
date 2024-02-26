@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/views/Navbar/navbar.css">
+    <link rel="stylesheet" href="views/Navbar/navbar.css">
     <title>Responsive Navbar using HTML & CSS</title>
 </head>
 <body>
@@ -14,22 +14,22 @@
         <nav id="nav">
             <ul>
                 <li>
-                    <a href="src/views/Home/homeViews.php" class="active">Accueil</a>
+                    <a href="/home" class="active">Accueil</a>
                 </li>
                 <?php
                 if (isset($_SESSION['email']) && isset($_SESSION['motDePasse'])) {
-                    echo '<li><a href="src/views/Login-Register/login-registerViews.php?logout=true">Déconnexion</a></li>';
+                    echo '<li><a href="/login-register?logout=true">Déconnexion</a></li>';
                     if (isset($_GET['logout'])) {
                         session_unset();
                         session_destroy();
-                        header('Location: src/views/Login-Register/login-registerViews.php');
+                        header('Location: /login-register');
                         exit();
                     }
                 } else {
-                    echo '<li><a href="src/views/Login-Register/login-registerViews.php">Connexion-Inscription</a></li>';
+                    echo '<li><a href="/login-register">Connexion-Inscription</a></li>';
                     if (isset($_GET['login'])) {
                         session_start();
-                        header('Location: src/views/Login-Register/login-registerViews.php');
+                        header('Location: /login-register');
                         exit();
                     }
                 }
@@ -43,6 +43,6 @@
         </label>
     </header>
 
-    <script src="src/views/Navbar/navbar.js"></script>
+    <script src="views/Navbar/navbar.js"></script>
 </body>
 </html>

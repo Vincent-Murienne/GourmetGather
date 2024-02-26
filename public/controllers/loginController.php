@@ -1,6 +1,6 @@
 <?php
-require_once 'src/models/userModel.php';
-require_once 'src/bdd/bddConnexion.php';
+require_once '../../public/models/userModel.php';
+require_once '../../public/bdd/bddConnexion.php';
 
 class loginController {
     private $model;
@@ -18,11 +18,11 @@ class loginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['motDePasse'] = $motDePasse;
-                header('Location: src/views/Home/homeViews.php');
+                header('Location: public/views/Home/homeViews.php');
                 exit();
             } else {
                 $error_message = "Email ou mot de passe incorrect";
-                header('Location: src/views/Login-Register/login-registerViews.php');
+                header('Location: public/views/Login-Register/login-registerViews.php');
                 exit();
             }
         }
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->handleLogout();
 } else {
     // Redirection si le formulaire n'a pas été soumis
-    header('Location: src/views/Login-Register/login-registerViews.php');
+    header('Location: public/views/Login-Register/login-registerViews.php');
     exit();
 }
 ?>

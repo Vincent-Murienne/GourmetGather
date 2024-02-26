@@ -1,6 +1,6 @@
 <?php
-require_once 'src/models/recetteModel.php';
-require_once 'src/bdd/bddConnexion.php';
+require_once 'models/recetteModel.php';
+require_once 'bdd/bddConnexion.php';
 
 class HomeController {
     private $recetteModel;
