@@ -22,7 +22,7 @@ class UserModel {
         $affected_rows = $stmt->rowCount(); // Obtenir le nombre de lignes affectées
     
         if ($affected_rows > 0) {
-            require '../models/mailer.php';
+            require '../../public/models/mailer.php';
             $mail->setFrom("noreply@example.com");
             $mail->addAddress($email);
             $mail->Subject = "Password Reset";

@@ -13,7 +13,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
 }
 
 section{
@@ -32,7 +32,7 @@ section{
   position: relative;
   background: #fff;
   border-radius: 20px;
-  height: 400px;
+  height: 430px;
   margin: 20px 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
@@ -70,6 +70,18 @@ section .card .image img{
   object-fit: cover;
   border-radius: 20%;
   border: 3px solid #fff;
+}
+
+.searchbar{
+  position: center;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
 }
 
 .card .media-icons{

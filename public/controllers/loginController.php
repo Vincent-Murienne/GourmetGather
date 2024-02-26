@@ -18,11 +18,11 @@ class loginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['motDePasse'] = $motDePasse;
-                header('Location: public/views/Home/homeViews.php');
+                header('Location: /home');
                 exit();
             } else {
                 $error_message = "Email ou mot de passe incorrect";
-                header('Location: public/views/Login-Register/login-registerViews.php');
+                header('Location: /login-register');
                 exit();
             }
         }

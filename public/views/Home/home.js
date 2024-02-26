@@ -19,7 +19,7 @@ const buttons = document.querySelectorAll('.aboutMe');
 buttons.forEach(button => {
     button.addEventListener('click', function() {
         const recetteId = this.getAttribute('data-id');
-        window.location.href = 'src/views/DetailsRecette/detailsRecetteViews.php?id=' + recetteId;
+        window.location.href = '../../views/DetailsRecette/detailsRecetteViews.php?id=' + recetteId;
     });
 });
 

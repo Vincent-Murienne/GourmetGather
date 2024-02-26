@@ -14,14 +14,29 @@ class RecetteModel {
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getRecetteById($id) {
-        $query = "SELECT * FROM recette WHERE id = :id";
+    public function getRecetteById($recetteId) {
+        $query = "SELECT * FROM recette WHERE idRecette = :recetteId";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindParam(':recetteId', $recetteId, PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
-        return $result;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function getEtapesByRecetteId($recetteId) {
+        $query = "SELECT * FROM etape WHERE idEtape IN (SELECT idEtape FROM posseder WHERE idRecette = :recetteId)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':recetteId', $recetteId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getIngredientsByRecetteId($recetteId) {
+        $query = "SELECT * FROM ingredient WHERE idIngredient IN (SELECT idIngredient FROM detenir WHERE idEtape IN (SELECT idEtape FROM posseder WHERE idRecette = :recetteId))";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':recetteId', $recetteId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getAvisRecette() {

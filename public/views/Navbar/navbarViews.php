@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="views/Navbar/navbar.css">
-    <title>Responsive Navbar using HTML & CSS</title>
+    <title>GourmetGather</title>
 </head>
 <body>
     <header>
@@ -28,7 +32,6 @@
                 } else {
                     echo '<li><a href="/login-register">Connexion-Inscription</a></li>';
                     if (isset($_GET['login'])) {
-                        session_start();
                         header('Location: /login-register');
                         exit();
                     }
@@ -43,6 +46,6 @@
         </label>
     </header>
 
-    <script src="views/Navbar/navbar.js"></script>
+    <script src="../../../public/views/Navbar/navbar.js"></script>
 </body>
 </html>

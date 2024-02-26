@@ -1,6 +1,6 @@
 <?php
-require_once 'models/userModel.php';
-require_once 'bdd/bddConnexion.php';
+require_once '../../public/models/userModel.php';
+require_once '../../public/bdd/bddConnexion.php';
 
 class RegisterController {
     private $model;
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controller->handleRegister(0);
 } else {
     // Redirection si le formulaire n'a pas été soumis
-    header('Location: views/registerViews.php');
+    header('Location: /login-register');
     exit();
 }
 ?>

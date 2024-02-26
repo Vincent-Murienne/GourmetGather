@@ -1,6 +1,6 @@
 <?php
-require_once 'models/userModel.php';
-require_once 'bdd/bddConnexion.php';
+require_once '../../public/models/userModel.php';
+require_once '../../public/bdd/bddConnexion.php';
 
 class UserController {
     private $userModel;

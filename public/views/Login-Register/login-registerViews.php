@@ -12,7 +12,7 @@ if (isset($_GET['error']) && $_GET['error'] === 'missing_fields') {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <link rel="stylesheet" href="../../views/Login-Register/login-register.css">
+        <link rel="stylesheet" href="views/Login-Register/login-register.css">
         <title>Connexion | Inscription</title>
     </head>
     <body>
@@ -52,7 +52,7 @@ if (isset($_GET['error']) && $_GET['error'] === 'missing_fields') {
                     <span>ou via email</span>
                     <input type="email" name="email" placeholder="Email">
                     <input type="password" name="motDePasse" placeholder="Mot de passe">
-                    <a href="../../views/forgot-password.php">Mot de passe oublié ?</a>
+                    <a href="views/forgot-password.php">Mot de passe oublié ?</a>
                     <button>Valider</button>
                 </form>
             </div>
@@ -71,6 +71,6 @@ if (isset($_GET['error']) && $_GET['error'] === 'missing_fields') {
                 </div>
             </div>
         </div>
-        <script src="../../views/Login-Register/login-register.js"></script>
+        <script src="views/Login-Register/login-register.js"></script>
     </body>
 </html>

@@ -17,8 +17,8 @@ $avisRecettes = $recetteModel->getAvisRecette();
         <link rel="stylesheet" href="../../views/Home/home.css">
     </head>
     <body>
-        <!--<input id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez une recette">
-        <div id="results"></div>!-->
+        <input class="searchbar" id="searchbar" onkeyup="search()" type="text" name="search" placeholder="Recherchez une recette">
+        <div id="results"></div>
         <section>
             <div class="swiper mySwiper container">
                 <div class="swiper-wrapper content">

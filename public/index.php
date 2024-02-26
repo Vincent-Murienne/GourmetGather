@@ -9,13 +9,11 @@ if ($uri === '/home') {
 } elseif ($uri === '/login-register') {
     require 'views/Login-Register/login-registerViews.php';
 }
-elseif ($uri === '/controllers/registerController.php') {
-    require '../../controllers/registerController.php';
-} elseif ($uri === '/controllers/loginController.php') {
-    require 'controllers/loginController.php';
-}
-elseif ($uri === '/1'){
+elseif ($uri === '/phpinfo'){
     require 'phpinfo.php';
+}
+elseif (preg_match('/\/recettes\/\d+/', $uri)) {
+    require 'views/DetailsRecette/detailsRecetteViews.php';
 }
 else{
     require 'errors/404.php';

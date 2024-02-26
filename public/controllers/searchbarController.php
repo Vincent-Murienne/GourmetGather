@@ -1,7 +1,7 @@
 <?php
 
-include 'bdd/bddConnexion.php';
-include 'models/recetteModel.php';
+require_once '../../public/bdd/bddConnexion.php';
+require_once '../../public/models/recetteModel.php';
 
 $query = $_GET['query'];
 
