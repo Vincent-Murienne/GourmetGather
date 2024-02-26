@@ -18,7 +18,7 @@ class loginController {
                 session_start();
                 $_SESSION['email'] = $email;
                 $_SESSION['motDePasse'] = $motDePasse;
-                header('Location: /home');
+                header('Location: /');
                 exit();
             } else {
                 $error_message = "Email ou mot de passe incorrect";

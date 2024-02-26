@@ -4,7 +4,7 @@ require 'views/Navbar/navbarViews.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 
-if ($uri === '/home') {
+if ($uri === '/') {
     require 'views/Home/homeViews.php';
 } elseif ($uri === '/login-register') {
     require 'views/Login-Register/login-registerViews.php';

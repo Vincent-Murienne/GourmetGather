@@ -49,13 +49,19 @@ class UserModel {
     }
 
     public function verifierConnexion($email, $motDePasse) {
-        $query = "SELECT * FROM user WHERE email = ? AND motDePasse = ?";
+        $query = "SELECT motDePasse FROM user WHERE email = :email";
         $stmt = $this->db->prepare($query);
-        $stmt->execute([$email, $motDePasse]);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result;
-    }
 
+        if ($result && password_verify($motDePasse, $result['motDePasse'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function verifierConnexionAdm() {
         $query = "SELECT * FROM user WHERE roles = 1";
         $stmt = $this->db->query($query);

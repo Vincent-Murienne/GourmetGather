@@ -24,7 +24,7 @@ class RegisterController {
         $this->model->insertUser($_POST['nom'], $_POST['prenom'], $_POST['email'], $hashedPassword, $roles);
         
         // Redirection après l'insertion réussie
-        header('Location: /home');
+        header('Location: /');
         exit();
     }
 }

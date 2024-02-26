@@ -18,7 +18,7 @@ session_start();
         <nav id="nav">
             <ul>
                 <li>
-                    <a href="/home" class="active">Accueil</a>
+                    <a href="/" class="active">Accueil</a>
                 </li>
                 <?php
                 if (isset($_SESSION['email']) && isset($_SESSION['motDePasse'])) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 15 fév. 2024 à 08:52
+-- Généré le : lun. 26 fév. 2024 à 17:18
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -33,19 +33,23 @@ CREATE TABLE IF NOT EXISTS `avis` (
   `dateAvis` date DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   `notes` int DEFAULT NULL,
-  `idUser` int DEFAULT NULL,
   `idRecette` int DEFAULT NULL,
+  `idUser` int DEFAULT NULL,
   PRIMARY KEY (`idAvis`),
-  KEY `idUser` (`idUser`),
-  KEY `idRecette` (`idRecette`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  KEY `idRecette` (`idRecette`),
+  KEY `fk_user_id` (`idUser`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `avis`
 --
 
-INSERT INTO `avis` (`idAvis`, `dateAvis`, `description`, `notes`, `idUser`, `idRecette`) VALUES
-(1, '2024-02-13', 'Recette excellente !', 5, 3, 1);
+INSERT INTO `avis` (`idAvis`, `dateAvis`, `description`, `notes`, `idRecette`, `idUser`) VALUES
+(1, '2024-02-13', 'Recette excellente !', 5, 1, 1),
+(2, '2024-02-15', 'Excellent', 4, 4, 3),
+(3, '2024-02-01', 'Très moyen', 3, 1, 2),
+(4, '2024-02-13', 'Passable', 3, 1, 4),
+(5, '2024-02-15', 'A ne pas refaire !', 1, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -156,18 +160,21 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `titre` varchar(50) DEFAULT NULL,
   `description` varchar(200) DEFAULT NULL,
   `nombrePortions` int DEFAULT NULL,
-  `idUser` int DEFAULT NULL,
   `photo` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`idRecette`),
-  KEY `idUser` (`idUser`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`idRecette`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `recette`
 --
 
-INSERT INTO `recette` (`idRecette`, `titre`, `description`, `nombrePortions`, `idUser`, `photo`) VALUES
-(1, 'Fondue de camembert', 'Fondue de camembert\r\n', 1, 3, 'https://www.president.fr/wp-content/uploads/2019/12/la-fondue-camembert-aux-pommes-540x540.png');
+INSERT INTO `recette` (`idRecette`, `titre`, `description`, `nombrePortions`, `photo`) VALUES
+(1, 'Fondue de camembert', 'Fondue de camembert\r\n', 1, 'https://www.president.fr/wp-content/uploads/2019/12/la-fondue-camembert-aux-pommes-540x540.png'),
+(2, 'Pizza Margherita', 'Pizza avec tomates et mozzarella', 4, 'https://e7.pngegg.com/pngimages/424/785/png-clipart-neapolitan-pizza-neapolitan-cuisine-italian-cuisine-pizza-margherita-pizza-food-recipe.png'),
+(3, 'Salade César', 'Salade fraîche avec poulet grillé', 2, 'https://breaknfood.fr/wp-content/uploads/2021/05/SALADE.jpg'),
+(4, 'Spaghetti Bolognaise', 'Spaghetti avec sauce à la viande', 3, 'https://png.pngtree.com/background/20230829/original/pngtree-spaghetti-bolognese-isolated-delicious-dinner-spice-photo-picture-image_4882166.jpg'),
+(5, 'Tarte aux pommes', 'Tarte sucrée aux pommes caramélisées', 6, 'https://img.freepik.com/photos-premium/tarte-aux-pommes-isole-fond-blanc-gros-plan_185193-65096.jpg'),
+(6, 'Boeuf Bourguignon', 'Viande de boeuf et légumes', 4, 'https://pure-saveur.com/wp-content/uploads/2020/09/bourguinion.png');
 
 -- --------------------------------------------------------
 
@@ -183,19 +190,25 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(50) DEFAULT NULL,
   `motDePasse` varchar(50) DEFAULT NULL,
   `roles` int DEFAULT NULL,
-  PRIMARY KEY (`idUser`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3;
+  `reset_token_hash` varchar(64) DEFAULT NULL,
+  `reset_token_expires_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`idUser`),
+  UNIQUE KEY `reset_token_hash` (`reset_token_hash`)
+) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `nom`, `prenom`, `email`, `motDePasse`, `roles`) VALUES
-(1, 'Murienne', 'Vincent', 'muriennevincent@gmail.com', 'Phan@1972', 0),
-(2, 'Murienne', 'Vincent', 'vmurienne-gourmetgather@gmail.com', 'Phan@1972', 1),
-(3, 'Roger', 'John', 'johnroger@yahoo.fr', 'johnRoger@123', 0),
-(37, 'Hadil', 'Hadil', 'Hadil@gmail.com', 'Hadil', 0),
-(4, 'Selva', 'Brass', 'Brass943@gmail.com', 'Jeanestachier94', 0);
+INSERT INTO `user` (`idUser`, `nom`, `prenom`, `email`, `motDePasse`, `roles`, `reset_token_hash`, `reset_token_expires_at`) VALUES
+(1, 'Murienne', 'Vincent', 'muriennevincent@gmail.com', 'Phan@1972', 0, '6d78b7e5c15b6c0aa5505ce55391ff96b4fedd1e295b37e2d80bbfb15539c1fc', '2024-02-26 16:43:01'),
+(2, 'Murienne', 'Vincent', 'vmurienne-gourmetgather@gmail.com', 'Phan@1972', 1, NULL, NULL),
+(3, 'Roger', 'John', 'johnroger@yahoo.fr', 'johnRoger@123', 0, NULL, NULL),
+(4, 'Hadil', 'Hadil', 'Hadil@gmail.com', 'Hadil', 0, NULL, NULL),
+(6, 'Robert', 'Alembert', 'robertalembert@gmail.com', '$2y$10$QARUfekniPgFqNRDwBPEreQBgBYhRgMlyP1.yUxKNmx', 0, NULL, NULL),
+(5, 'Selva', 'Brass', 'Brass943@gmail.com', 'Jeanestachier94', 0, NULL, NULL),
+(46, 'Jean', 'David', 'jeandavid@gmail.com', '$2y$10$p7a4gOpnjLZiQOBJZ7jIGOIjXuOCDkXEKI5h1U/.tvE', 0, NULL, NULL),
+(49, 'John', 'John', 'John@gmail.com', '$2y$10$KDSmHfwaYRMo1lFHk709Bubl38KdqOmXozoGVN.9icp', 0, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
